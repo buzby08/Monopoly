@@ -6,13 +6,15 @@
 #define PROPERTY_H
 #include <string>
 
-enum class PropertyColorSet { Brown, LightBlue, Purple, Orange, Red, Yellow, Green, DarkBlue };
+enum class PropertyColorSet { Brown, LightBlue, Pink, Orange, Red, Yellow, Green, DarkBlue };
+
+std::string colorSetToString(PropertyColorSet colorSet);
 
 class Property {
 private:
-    const std::string _name;
-    const int _price;
-    const PropertyColorSet _color_set;
+    std::string _name;
+    int _price;
+    PropertyColorSet _color_set;
 
 public:
     Property(const std::string &name, int price, PropertyColorSet color_set);

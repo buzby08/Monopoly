@@ -10,12 +10,15 @@
 #include <fstream>
 #include <iostream>
 
+#include "Board.h"
+
     using json = nlohmann::json;
 
 #include <stdexcept>
+#include <utility>
 
-Player::Player(const int id) : player_type(PlayerType::User), id(id), space(0), money(0), get_out_of_jail_attempts(0),
-                               get_out_of_jail_free(false) {
+Player::Player(const int id) : player_type(PlayerType::User), id(id), space(0), money(1500), get_out_of_jail_attempts(0),
+                               get_out_of_jail_free(false){
     }
 
 Player::Player(const std::string &save_file_path) : player_type(PlayerType::User) {
@@ -34,7 +37,12 @@ Player::Player(const std::string &save_file_path) : player_type(PlayerType::User
     money = static_cast<int>(data["money"]);
     get_out_of_jail_attempts = static_cast<int>(data["get_out_of_jail_attempts"]);
     get_out_of_jail_free = static_cast<bool>(data["get_out_of_jail_free"]);
+    color = "";
 }
+
+Player::Player(int id, std::string color) : player_type(PlayerType::User), id(id), space(0), money(0), get_out_of_jail_attempts(0),
+                               get_out_of_jail_free(false), color(std::move(color)){}
+
 
 std::string Player::as_string() {
     return std::format(
@@ -62,5 +70,31 @@ int Player::move_forward(const int number_of_spaces) {
     return space;
 }
 
+int Player::Space() { return space; }
 
+std::string Player::current_state() {
+    std::string message = color;
 
+    message += std::format("Player {} is on space {}\n", id, space);
+    message += std::format("They have ${}\n", money);
+
+    if (properties.size() == 0) {
+        message += "They have no properties\n";
+        return message;
+    }
+
+    message += "Their properties are: \n";
+    for (const auto& property : properties) {
+        message += std::format("  - {} ({})", property.name(), colorSetToString(property.color_set()));
+    }
+    return message;
+}
+
+void Player::enter_jail() {
+    in_jail = true;
+    space = Board::jail_space;
+}
+
+void Player::exit_jail() { in_jail = false; }
+
+bool Player::InJail() { return in_jail; }

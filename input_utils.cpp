@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <cstdlib>
 
 using namespace std;
 
@@ -53,5 +54,13 @@ int get_int(const std::string &message, const int limit, const LimitType limit_t
 
 int get_int(const std::string &message, int minimum_value, int maximum_value) {
     return get_int(message, minimum_value, maximum_value, true, true);
+}
+
+void clear_screen() {
+#ifdef _WIN32
+    std::system("cls");
+#else
+    std::system("clear");
+#endif
 }
 

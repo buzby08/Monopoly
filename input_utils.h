@@ -12,4 +12,6 @@ int get_int(const std::string& message, int minimum_value, int maximum_value, bo
 int get_int(const std::string& message, int limit, LimitType limit_type);
 int get_int(const std::string& message, int minimum_value, int maximum_value);
 
+void clear_screen();
+
 #endif //INPUT_UTILS_H
