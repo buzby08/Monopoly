@@ -11,8 +11,6 @@
 #include "input_utils.h"
 
 
-using namespace std;
-
 Game::Game() {}
 
 void Game::nextTurn() {
@@ -30,13 +28,13 @@ void Game::play() {
     clear_screen();
 
     for (int i = 0; i < players.size(); ++i) {
-        cout << players[i]->current_state() << endl;
+        std::cout << players[i]->current_state() << std::endl;
     }
 
 
     printf("It is player %d's turn\n", turn+1);
     printf("Click enter to roll the dice\n");
-    cin.get();
+    std::cin.get();
 
     int dice_roll_one = rollDice();
     int dice_roll_two = rollDice();

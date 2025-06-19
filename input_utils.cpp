@@ -8,31 +8,28 @@
 #include <limits>
 #include <cstdlib>
 
-using namespace std;
-
-
 int get_int(const std::string &message, const int minimum_value, const int maximum_value, const bool minimum_used,
     const bool maximum_used) {
         start:
-        cout << message << endl;
+        std::cout << message << std::endl;
 
         int value;
-        cin >> value;
+        std::cin >> value;
 
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "You didnt enter an integer" << endl;
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "You didnt enter an integer" << std::endl;
             goto start;
         }
 
         if (minimum_used && value < minimum_value) {
-            cout << "You must enter a value greater than or equal to " << minimum_value << endl;
+            std::cout << "You must enter a value greater than or equal to " << minimum_value << std::endl;
             goto start;
         }
 
         if (maximum_used && value > maximum_value) {
-            cout << "You must enter a value less than or equal to " << maximum_value << endl;
+            std::cout << "You must enter a value less than or equal to " << maximum_value << std::endl;
             goto start;
         }
 

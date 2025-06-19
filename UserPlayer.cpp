@@ -7,7 +7,6 @@
 #include "Property.h"
 #include "input_utils.h"
 
-using namespace std;
 
 GetOutOfJailOption UserPlayer::get_out_of_jail_option() {
     int optionNumber = 0;
@@ -15,24 +14,24 @@ GetOutOfJailOption UserPlayer::get_out_of_jail_option() {
 
     if (get_out_of_jail_free) {
         optionNumber++;
-        cout << format("{}. Use get out of jail free card.", optionNumber) << endl;
+        std::cout << format("{}. Use get out of jail free card.", optionNumber) << std::endl;
         valid_options[optionNumber-1] = GetOutOfJailOption::GetOutOfJailFree;
     }
 
     if (money > 50) {
         optionNumber++;
-        cout << format("{}. Pay $50.", optionNumber) << endl;
+        std::cout << format("{}. Pay $50.", optionNumber) << std::endl;
         valid_options[optionNumber-1] = GetOutOfJailOption::Pay;
     }
 
     if (get_out_of_jail_attempts < 3) {
         optionNumber++;
-        cout << format("{}. Roll a double.", optionNumber) << endl;
+        std::cout << format("{}. Roll a double.", optionNumber) << std::endl;
         valid_options[optionNumber-1] = GetOutOfJailOption::DiceRoll;
     }
 
     optionNumber++;
-    cout << format("{}. Declare bankruptcy.", optionNumber) << endl;
+    std::cout << format("{}. Declare bankruptcy.", optionNumber) << std::endl;
     valid_options[optionNumber-1] = GetOutOfJailOption::DeclareBankruptcy;
 
     int selected_option = get_int("Enter an option: ", 1, optionNumber+1);

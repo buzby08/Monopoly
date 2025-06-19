@@ -9,11 +9,9 @@
 
 #include "Board.h"
 #include "Player.h"
-using namespace std;
+
 
 class Game {
-    static constexpr int go_amount = 200;
-
     int turn = 0;
     void nextTurn();
     void doSpaceAction(SpaceActions action);
@@ -23,13 +21,14 @@ class Game {
     void onJailSpace();
 
 public:
+    static constexpr int go_amount = 200;
     Game();
 
     /**
      * A vector of all the players in the game. This must be a subclass of the Player class (which is not instantiable),
      * such as UserPlayer or AiPlayer
      */
-    vector<unique_ptr<Player>> players;
+    std::vector<std::unique_ptr<Player>> players;
     /**
      * Starts the game loop
      */

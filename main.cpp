@@ -1,13 +1,9 @@
 #include <fstream>
 #include <iostream>
-#include <nlohmann/json.hpp>
 
 #include "AiPlayer.h"
 #include "UserPlayer.h"
 #include "Game.h"
-
-using json = nlohmann::json;
-using namespace std;
 
 int main() {
     std::cout << "Welcome to Monopoly, using c++" << std::endl;

@@ -5,7 +5,6 @@
 #include "Property.h"
 #include <string>
 
-using namespace std;
 
 std::string colorSetToString(const PropertyColorSet colorSet) {
     switch (colorSet) {

@@ -11,11 +11,12 @@
 #include <iostream>
 
 #include "Board.h"
+#include "Game.h"
 
-    using json = nlohmann::json;
-
-#include <stdexcept>
 #include <utility>
+
+using json = nlohmann::json;
+
 
 Player::Player(const int id) : player_type(PlayerType::User), id(id), space(0), money(1500), get_out_of_jail_attempts(0),
                                get_out_of_jail_free(false){
@@ -66,7 +67,13 @@ void Player::move_to_space(const int new_space) {
 }
 
 int Player::move_forward(const int number_of_spaces) {
+    int old_space = space;
     space = (space + number_of_spaces) % 40;
+
+    if (old_space > 1 && space == 1) {
+        money += Game::go_amount;
+    }
+
     return space;
 }
 
