@@ -85,7 +85,7 @@ std::string Player::current_state() {
 
     message += "Their properties are: \n";
     for (const auto& property : properties) {
-        message += std::format("  - {} ({})", property.name(), colorSetToString(property.color_set()));
+        message += std::format("  - {} ({})", property.name(), propertyColorSet_to_string(property.color_set()));
     }
     return message;
 }
@@ -97,4 +97,4 @@ void Player::enter_jail() {
 
 void Player::exit_jail() { in_jail = false; }
 
-bool Player::InJail() { return in_jail; }
+bool Player::InJail() const { return in_jail; }

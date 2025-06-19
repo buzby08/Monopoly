@@ -24,8 +24,20 @@ class Game {
 
 public:
     Game();
+
+    /**
+     * A vector of all the players in the game. This must be a subclass of the Player class (which is not instantiable),
+     * such as UserPlayer or AiPlayer
+     */
     vector<unique_ptr<Player>> players;
+    /**
+     * Starts the game loop
+     */
     void play();
+    /**
+     * Rolls a standard 6 sided dice and returns the result.
+     * @return The dice roll, from 1 to 6 (inclusive)
+     */
     static int rollDice();
 };
 

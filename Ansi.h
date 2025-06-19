@@ -32,8 +32,22 @@ class Ansi {
     static const std::string cyan_bg;
     static const std::string white_bg;
 
+    /**
+     * Create an ansi terminal foreground color from rgb values
+     * @param red The red value (0 to 255)
+     * @param green The green value (0 to 255)
+     * @param blue The blue value (0 to 255)
+     * @return The string ansi code for the inputted rgb color
+     */
     static const std::string rgb_fg(int red, int green, int blue);
 
+    /**
+     * Create an ansi terminal background color from rgb values
+     * @param red The red value (0 to 255)
+     * @param green The green value (0 to 255)
+     * @param blue The blue value (0 to 255)
+     * @return The string ansi code for the inputted rgb color
+     */
     static const std::string rgb_bg(int red, int green, int blue);
 
 };

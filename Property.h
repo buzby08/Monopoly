@@ -1,14 +1,28 @@
 //
 // Created by busby08 on 16/06/25.
-//
 
 #ifndef PROPERTY_H
 #define PROPERTY_H
 #include <string>
 
+/**
+ * All the color sets in the game
+ */
 enum class PropertyColorSet { Brown, LightBlue, Pink, Orange, Red, Yellow, Green, DarkBlue };
 
-std::string colorSetToString(PropertyColorSet colorSet);
+inline std::string propertyColorSet_to_string(PropertyColorSet e) {
+    switch (e) {
+        case PropertyColorSet::Brown: return "Brown";
+        case PropertyColorSet::LightBlue: return "Light Blue";
+        case PropertyColorSet::Pink: return "Pink";
+        case PropertyColorSet::Orange: return "Orange";
+        case PropertyColorSet::Red: return "Red";
+        case PropertyColorSet::Yellow: return "Yellow";
+        case PropertyColorSet::Green: return "Green";
+        case PropertyColorSet::DarkBlue: return "Dark Blue";
+        default: return "unknown";
+    }
+}
 
 class Property {
 private:
@@ -19,11 +33,11 @@ private:
 public:
     Property(const std::string &name, int price, PropertyColorSet color_set);
 
-    std::string name() const;
+    [[nodiscard]] std::string name() const;
 
     const char *c_name();
-    int price() const;
-    PropertyColorSet color_set() const;
+    [[nodiscard]] int price() const;
+    [[nodiscard]] PropertyColorSet color_set() const;
 };
 
 
