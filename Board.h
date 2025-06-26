@@ -42,8 +42,11 @@ inline std::string to_string(const SpaceActions e) {
 
 class Board {
 private:
-    std::array<Property, 22> properties;
-    void populate_properties();
+    std::vector<Property> properties;
+    std::vector<int> property_space_numbers;
+    static std::vector<Property> populate_properties();
+
+    bool is_property(int space_number) const;
 
 public:
     Board();
@@ -55,7 +58,9 @@ public:
      * @param space_number The space number (from 0 to 39, inclusive)
      * @return The space action from the `SpaceActions` enum. This is `SpaceActions::Invalid` if not a valid space number
      */
-    static SpaceActions get_space_action(int space_number);
+    SpaceActions get_space_action(int space_number) const;
+    Property get_space_property(int space_number);
+    std::string get_space_name(int space_number);
 };
 
 

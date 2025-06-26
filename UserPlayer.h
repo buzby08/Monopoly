@@ -20,6 +20,7 @@ public:
 
     GetOutOfJailOption get_out_of_jail_option() override;
     bool buy_property(Property property) override;
+    void request_enter(const std::string &message) override;
 };
 
 

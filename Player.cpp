@@ -15,7 +15,9 @@
 
 #include <utility>
 
-using json = nlohmann::json;
+#include "Ansi.h"
+
+    using json = nlohmann::json;
 
 
 Player::Player(const int id) : player_type(PlayerType::User), id(id), space(0), money(1500), get_out_of_jail_attempts(0),
@@ -41,7 +43,7 @@ Player::Player(const std::string &save_file_path) : player_type(PlayerType::User
     color = "";
 }
 
-Player::Player(int id, std::string color) : player_type(PlayerType::User), id(id), space(0), money(0), get_out_of_jail_attempts(0),
+Player::Player(int id, std::string color) : player_type(PlayerType::User), id(id), space(0), money(1500), get_out_of_jail_attempts(0),
                                get_out_of_jail_free(false), color(std::move(color)){}
 
 
@@ -61,6 +63,31 @@ void Player::remove_money(const int amount) {
     add_money(-1 * amount);
 }
 
+void Player::add_property(const Property &property) {
+    properties.push_back(property);
+}
+
+void Player::remove_property(const Property& property) {
+    for (int i = 0; i < properties.size(); i++) {
+        if (properties[i] == property) {
+            properties.erase(properties.begin() + i);
+        }
+    }
+}
+
+bool Player::has_property(const Property &property) {
+    for (int i = 0; i < properties.size(); i++) {
+        if (properties[i] == property) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Player::reset_get_out_of_jail_attempts() { get_out_of_jail_attempts = 0; }
+void Player::increase_get_out_of_jail_attempts() { get_out_of_jail_attempts += 1; }
+
+
 
 void Player::move_to_space(const int new_space) {
     space = new_space % 40;
@@ -77,12 +104,31 @@ int Player::move_forward(const int number_of_spaces) {
     return space;
 }
 
-int Player::Space() { return space; }
+void Player::remove_get_out_of_jail_free() {
+    get_out_of_jail_free = false;
+}
 
-std::string Player::current_state() {
+int Player::calculate_score() {
+    int score = money;
+
+    for (auto & property : properties) {
+        score += property.rent();
+    }
+
+    return score;
+}
+
+    int Player::Space() { return space; }
+
+std::string Player::current_state(Board & board) {
     std::string message = color;
 
-    message += std::format("Player {} is on space {}\n", id, space);
+    if (in_jail)
+        message += std::format("Player {} is in jail\n", id);
+
+    if (!in_jail)
+        message += std::format("Player {} is on space {} - {}\n", id, space, board.get_space_name(space));
+
     message += std::format("They have ${}\n", money);
 
     if (properties.size() == 0) {
@@ -92,7 +138,7 @@ std::string Player::current_state() {
 
     message += "Their properties are: \n";
     for (const auto& property : properties) {
-        message += std::format("  - {} ({})", property.name(), propertyColorSet_to_string(property.color_set()));
+        message += std::format("  - {} ({})\n", property.name(), propertyColorSet_to_string(property.color_set()));
     }
     return message;
 }
@@ -105,3 +151,9 @@ void Player::enter_jail() {
 void Player::exit_jail() { in_jail = false; }
 
 bool Player::InJail() const { return in_jail; }
+
+std::string Player::Color() const {
+    return color;
+}
+
+int Player::GetOutOfJailAttempts() const { return get_out_of_jail_attempts; }

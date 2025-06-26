@@ -6,15 +6,17 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include <cstdlib>
+
+#include "Ansi.h"
 
 int get_int(const std::string &message, const int minimum_value, const int maximum_value, const bool minimum_used,
-    const bool maximum_used) {
+            const bool maximum_used) {
         start:
         std::cout << message << std::endl;
 
         int value;
         std::cin >> value;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -53,7 +55,9 @@ int get_int(const std::string &message, int minimum_value, int maximum_value) {
     return get_int(message, minimum_value, maximum_value, true, true);
 }
 
-void clear_screen() {
+void clear_screen(const bool reset_color) {
+    if (reset_color)
+        std::cout << Ansi::reset;
 #ifdef _WIN32
     std::system("cls");
 #else

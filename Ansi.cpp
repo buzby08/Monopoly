@@ -36,3 +36,9 @@ const std::string Ansi::rgb_fg(int red, int green, int blue) {
     const std::string result = std::format("\u001b[38;2;{};{};{}m", red, green, blue);
     return result;
 }
+
+const std::string Ansi::reset = "\033[0m";
+const std::string Ansi::green_fg = "\033[32m";
+const std::string Ansi::cyan_fg = "\033[36m";
+const std::string Ansi::yellow_fg = "\033[33m";
+const std::string Ansi::red_fg = "\033[31m";

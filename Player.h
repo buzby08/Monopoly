@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "Board.h"
 #include "Property.h"
 
 enum class PlayerType { User, Ai };
@@ -56,6 +57,13 @@ public:
      */
     void remove_money(int amount);
 
+    void add_property(const Property &property);
+    void remove_property(const Property& property);
+    bool has_property(const Property& property);
+
+    void reset_get_out_of_jail_attempts();
+    void increase_get_out_of_jail_attempts();
+
     /**
      * Moves the player to jail, and sets the in_jail modifier to true
      */
@@ -78,12 +86,16 @@ public:
      */
     int move_forward(int number_of_spaces);
 
+    void remove_get_out_of_jail_free();
+
+    int calculate_score();
+
     std::string as_string();
     /**
      * Gets the current state of the player, in a human-readable format
      * @return The current state of the player, for the game to output
      */
-    std::string current_state();
+    std::string current_state(Board& board);
 
     /**
      * @return The current space variable
@@ -92,10 +104,17 @@ public:
     /**
      * @return The current in_jail variable
      */
-    bool InJail() const;
+    [[nodiscard]] bool InJail() const;
+    /**
+     * @return The current color variable
+     */
+    [[nodiscard]] std::string Color() const;
+    int Id() const { return id; }
+    int GetOutOfJailAttempts() const;
 
     virtual GetOutOfJailOption get_out_of_jail_option() = 0;
     virtual bool buy_property(Property property) = 0;
+    virtual void request_enter(const std::string &message) = 0;
 
 };
 

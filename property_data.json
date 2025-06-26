@@ -1,0 +1,12 @@
+{
+  "old-kent-road": {
+    "cost": 60,
+    "mortgage": 30,
+    "site-rent": 2,
+    "one-house-rent": 10,
+    "two-house-rent": 30,
+    "three-house-rent": 90,
+    "four-house-rent": 160,
+    "hotel-rent":
+  }
+}

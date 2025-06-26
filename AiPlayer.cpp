@@ -3,9 +3,21 @@
 //
 
 #include "AiPlayer.h"
+
+#include <iostream>
+#include <unistd.h>
+
 #include "Property.h"
 
+void AiPlayer::wait() {
+    if (add_delay) {
+        printf("Player %d is thinking...\n", id);
+        sleep(1);
+    }
+}
+
 GetOutOfJailOption AiPlayer::get_out_of_jail_option() {
+    wait();
     if (get_out_of_jail_free) return GetOutOfJailOption::GetOutOfJailFree;
 
     constexpr int get_out_of_jail_price = 50;
@@ -18,8 +30,18 @@ GetOutOfJailOption AiPlayer::get_out_of_jail_option() {
 }
 
 bool AiPlayer::buy_property(Property property) {
-    if (money > (property.price()*2.5)) return true;
+    wait();
+    if (money > (property.cost()*2.5)) return true;
 
     return false;
+}
+
+void AiPlayer::request_enter(const std::string &message) {
+    std::cout << message;
+    wait();
+}
+
+void AiPlayer::use_delay() {
+    add_delay = true;
 }
 

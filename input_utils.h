@@ -38,6 +38,6 @@ int get_int(const std::string& message, int minimum_value, int maximum_value);
 /**
  * Clears the terminal screen, using a syscall (either the 'cls' command on Windows, or 'clear' on unix based systems
  */
-void clear_screen();
+void clear_screen(bool reset_color = false);
 
 #endif //INPUT_UTILS_H

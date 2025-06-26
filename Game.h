@@ -6,6 +6,7 @@
 #define GAME_H
 #include <vector>
 #include <memory>
+#include <random>
 
 #include "Board.h"
 #include "Player.h"
@@ -13,15 +14,27 @@
 
 class Game {
     int turn = 0;
+    Board board;
+
+    std::uniform_int_distribution<> random;
+    std::mt19937 mersenne_twister_engine;
+
     void nextTurn();
     void doSpaceAction(SpaceActions action);
 
     void landOnGo();
     void goToJail();
     void onJailSpace();
+    void onProperty();
+    void payRent(Player *receiving_player, const Property &property) const;
+    void get_out_of_jail();
+    void declare_bankruptcy(const Player *current_player) const;
+
+    static void buyProperty(Player *player, const Property &property);
 
 public:
     static constexpr int go_amount = 200;
+    static constexpr int jail_exit_amount = 50;
     Game();
 
     /**
@@ -32,12 +45,12 @@ public:
     /**
      * Starts the game loop
      */
-    void play();
+    [[noreturn]] void play();
     /**
      * Rolls a standard 6 sided dice and returns the result.
      * @return The dice roll, from 1 to 6 (inclusive)
      */
-    static int rollDice();
+    int rollDice();
 };
 
 

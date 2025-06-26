@@ -10,6 +10,8 @@
 
 
 class AiPlayer : public Player{
+    bool add_delay = false;
+    void wait();
 public:
     using Player::Player;
 
@@ -17,6 +19,8 @@ public:
 
     GetOutOfJailOption get_out_of_jail_option() override;
     bool buy_property(Property property) override;
+    void request_enter(const std::string &message) override;
+    void use_delay();
 };
 
 

@@ -4,84 +4,54 @@
 
 #include <array>
 #include "Board.h"
+
+#include <format>
+#include <fstream>
+#include <iostream>
+#include <stdexcept>
+#include <vector>
+
 #include "Property.h"
+#include "PropertyCSVReader.h"
 
-void Board::populate_properties() {
-    Property old_kent_road("Old Kent Road", 60, PropertyColorSet::Brown);
-    Property whitechapel_road("Whitechapel Road", 60, PropertyColorSet::Brown);
+std::vector<Property> Board::populate_properties() {
+    std::vector<Property> all_properties = {};
 
-    Property angel_islington("The Angel Islington", 100, PropertyColorSet::LightBlue);
-    Property euston("Euston", 100, PropertyColorSet::LightBlue);
-    Property pentonville_road("Pentonville Road", 120, PropertyColorSet::LightBlue);
+    const std::vector<PropertyStruct> all_property_structs = PropertyCSVReader::read("properties.csv");
 
-    Property pall_mall("Pall Mall", 140, PropertyColorSet::Pink);
-    Property whitehall("Whitehall", 140, PropertyColorSet::Pink);
-    Property northumberland_avenue("Northumberland Avenue", 160, PropertyColorSet::Pink);
+    for (auto & property_struct : all_property_structs) {
+        Property temp_property(property_struct);
+        all_properties.push_back(temp_property);
+    }
 
-    Property bow_street("Bow Street", 180, PropertyColorSet::Orange);
-    Property marlborough_street("Marlborough Street", 180, PropertyColorSet::Orange);
-    Property vine_street("Vine Street", 200, PropertyColorSet::Orange);
 
-    Property strand("Strand", 220, PropertyColorSet::Red);
-    Property fleet_street("Fleet Street", 220, PropertyColorSet::Red);
-    Property trafalgar_square("Trafalgar Square", 240, PropertyColorSet::Red);
 
-    Property leicester_square("Leicester Square", 260, PropertyColorSet::Yellow);
-    Property coventry_street("Coventry Street", 260, PropertyColorSet::Yellow);
-    Property piccadilly("Piccadilly", 280, PropertyColorSet::Yellow);
-
-    Property regent_street("Regent Street", 280, PropertyColorSet::Green);
-    Property oxford_street("Oxford Street", 280, PropertyColorSet::Green);
-    Property bond_street("Bond Street", 300, PropertyColorSet::Green);
-
-    Property park_lane("Park Lane", 350, PropertyColorSet::DarkBlue);
-    Property mayfair("Mayfair", 400, PropertyColorSet::DarkBlue);
-
-    properties = std::array {
-    old_kent_road, whitechapel_road,
-    angel_islington, euston, pentonville_road,
-    pall_mall, whitehall, northumberland_avenue,
-    bow_street, marlborough_street, vine_street,
-    strand, fleet_street, trafalgar_square,
-    leicester_square, coventry_street, piccadilly,
-    regent_street, oxford_street, bond_street,
-    park_lane, mayfair};
+    return all_properties;
 }
 
-SpaceActions Board::get_space_action(int space_number) {
+bool Board::is_property(int space_number) const {
+    for (auto & property_space_number : property_space_numbers) {
+        if (space_number == property_space_number) return true;
+    }
+
+    return false;
+}
+
+Board::Board() {
+    properties = populate_properties();
+
+    for (auto & property : properties) {
+        property_space_numbers.push_back(property.space());
+    }
+}
+
+
+SpaceActions Board::get_space_action(int space_number) const {
+    if (is_property(space_number)) return SpaceActions::Property;
+
     switch (space_number) {
         case 0:
             return SpaceActions::Go;
-
-        case 1:
-        case 3:
-        case 5:
-        case 6:
-        case 8:
-        case 9:
-        case 11:
-        case 12:
-        case 13:
-        case 14:
-        case 15:
-        case 16:
-        case 18:
-        case 19:
-        case 21:
-        case 23:
-        case 24:
-        case 25:
-        case 26:
-        case 27:
-        case 28:
-        case 29:
-        case 31:
-        case 32:
-        case 34:
-        case 35:
-        case 37:
-        case 39:
-            return SpaceActions::Property;
 
         case 4: return SpaceActions::IncomeTax;
 
@@ -111,4 +81,32 @@ SpaceActions Board::get_space_action(int space_number) {
             return SpaceActions::Invalid;
     }
 }
+
+Property Board::get_space_property(int space_number) {
+    for (auto & property : properties) {
+        if (property.space() == space_number) return property;
+    }
+
+    throw std::invalid_argument("The provided space is not a valid property");
+}
+
+std::string Board::get_space_name(int space_number) {
+    if (is_property(space_number)) return get_space_property(space_number).name();
+
+    switch (get_space_action(space_number)) {
+        case SpaceActions::Go: return "Go";
+        case SpaceActions::IncomeTax: return "Income Tax";
+        case SpaceActions::Chance: return "Chance";
+        case SpaceActions::CommunityChest: return "Community Chest";
+        case SpaceActions::Jail: return "Jail";
+        case SpaceActions::FreeParking: return "Free Parking";
+        case SpaceActions::LuxuryTax: return "Luxury Tax";
+        case SpaceActions::GoToJail: return "Go To Jail";
+
+        case SpaceActions::Invalid:
+        default:
+            return "N/A";
+    }
+}
+
 

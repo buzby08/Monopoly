@@ -8,6 +8,7 @@
 
 
 class Ansi {
+public:
     static const std::string reset;
 
     static const std::string bold;
