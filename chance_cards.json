@@ -1,0 +1,34 @@
+[
+  {
+    "text": "Advance to Go. Collect £200",
+    "actions": [
+      "ADVANCE space 0"
+    ]
+  },
+  {
+    "text": "Advance to Trafalgar square. If you pass Go, collect £200",
+    "actions": [
+      "ADVANCE space 24"
+    ]
+  },
+  {
+    "text": "Advance to Mayfair",
+    "actions": [
+      "ADVANCE space 39"
+    ]
+  },
+  {
+    "text": "Advance to Pall Mall. If you pass Go, collect £200",
+    "actions": [
+      "ADVANCE space 11"
+    ]
+  },
+  {
+    "text": "Advance to the nearest Station. If unowned, you may buy it from the Bank. If owned, pay wonder twice the rental to which they are otherwise entitled.",
+    "action_id": 1
+  },
+  {
+    "text": "Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times amount thrown.",
+    "action_id":
+  }
+]

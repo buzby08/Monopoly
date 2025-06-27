@@ -42,8 +42,10 @@ GetOutOfJailOption UserPlayer::get_out_of_jail_option() {
 
 bool UserPlayer::buy_property(Property property) {
     if (money < property.cost()) {
-        printf("You cannot buy %s, as it costs $%d, but you only have $%d",
+        clear_screen();
+        printf("You cannot buy %s, as it costs $%d, but you only have $%d\n",
             property.c_name(), property.cost(), money);
+        request_enter("Click enter to continue\n");
         return false;
     }
 

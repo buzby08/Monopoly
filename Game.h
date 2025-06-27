@@ -21,14 +21,15 @@ class Game {
 
     void nextTurn();
     void doSpaceAction(SpaceActions action);
+    Player * current_player() const;
 
-    void landOnGo();
-    void goToJail();
-    void onJailSpace();
+    void landOnGo() const;
+    void goToJail() const;
+    void onJailSpace() const;
     void onProperty();
     void payRent(Player *receiving_player, const Property &property) const;
     void get_out_of_jail();
-    void declare_bankruptcy(const Player *current_player) const;
+    void declare_bankruptcy() const;
 
     static void buyProperty(Player *player, const Property &property);
 
