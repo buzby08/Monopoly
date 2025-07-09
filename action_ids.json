@@ -1,4 +1,6 @@
 {
   "1": "advance to nearest station. Pay double rent if unowned, or offer to buy",
-  "2": "advance to nearest"
+  "2": "advance to nearest utility. Throw dice and pay 10x if owned, or offer to buy",
+  "3": "pay £25 for each house, pay £100 for each hotel",
+  "4": "pay £50 to each player"
 }

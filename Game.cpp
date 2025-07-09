@@ -3,26 +3,17 @@
 //
 
 #include "Game.h"
+
+#include <csignal>
 #include <iostream>
 #include <string>
 #include <ctime>
-#include <random>
 
 #include "Ansi.h"
 #include "Board.h"
-#include "input_utils.h"
+#include "utilities.h"
+#include "Random.h"
 
-
-Game::Game() {
-    board = Board();
-    std::random_device rd;
-    const std::mt19937 gen(rd());
-
-    mersenne_twister_engine = gen;
-
-    std::uniform_int_distribution<> distrib(1, 6);
-    random = distrib;
-}
 
 void Game::nextTurn() {
     if (turn >= players.size()-1) {
@@ -35,11 +26,13 @@ void Game::nextTurn() {
 
 
 [[noreturn]] void Game::play() {
+    signal(SIGINT, signal_callback_handler);
+
     start:
     clear_screen(true);
 
     for (const auto & player : players) {
-        std::cout << player->current_state(board) << std::endl;
+        std::cout << player->current_state() << std::endl;
     }
 
 
@@ -51,8 +44,8 @@ void Game::nextTurn() {
         goto start;
     }
 
-    printf(current_player()->Color().c_str());
-    printf("It is player %d's turn\n", turn+1);
+    std::cout << current_player()->Color();
+    std::cout << std::format("It is player {}'s turn", turn+1) << std::endl;
 
     if (current_player()->InJail()) {
         current_player()->request_enter("Click enter to take your turn\n");
@@ -88,7 +81,77 @@ void Game::nextTurn() {
 }
 
 int Game::rollDice() {
-    return random(mersenne_twister_engine);
+    return Random::getRandomInt(1, 6);
+}
+
+void Game::passGo(Player *player) {
+    std::cout << std::format("You passed go. Collect £{}", go_amount) << std::endl;
+    player->request_enter("Click enter to continue\n");
+    player->add_money(go_amount);
+}
+
+void Game::endGame(const bool ignore_player, const int player_to_ignore) {
+    std::cout << "The game is over" << std::endl;
+
+    std::vector<Player*> max_players;
+    int max_score = 0;
+
+    for (const auto & unique_player_ptr : players) {
+        Player *player = unique_player_ptr.get();
+
+        std::cout << Ansi::reset;
+
+        if (ignore_player && player->Id() == player_to_ignore) {
+            std::cout << Ansi::red_fg;
+            std::cout << std::format("Player {} went bankrupt. Final score £0", player->Id()) << std::endl;
+            continue;
+        }
+
+        std::cout << player->Color();
+        int player_score = player->calculate_score();
+        std::cout << std::format("Player {} has a score of £{}", player->Id(), player_score) << std::endl;
+
+        if (player_score > max_score) {
+            max_score = player_score;
+            max_players.clear();
+            max_players.push_back(player);
+            continue;
+        }
+
+        if (player_score == max_score) {
+            max_players.push_back(player);
+        }
+    }
+
+    std::cout << Ansi::reset;
+
+    if (max_players.size() <= 0) {
+        std::cout << std::endl << "There is no winner" << std::endl;
+    }
+
+    if (max_players.size() == 1) {
+        std::cout << max_players[0]->Color();
+        std::cout << std::format("Player {} wins with a score of £{}", max_players[0]->Id(), max_score) << std::endl;
+    }
+
+    if (max_players.size() >= 2) {
+        std::cout << std::endl;
+
+        std::vector<int> winning_ids;
+        for (const auto & player : max_players) {
+            winning_ids.push_back(player->Id());
+        }
+
+        std::cout << std::format(
+            "There are {} winners, players {}, with a score of £{} each",
+            winning_ids.size(),
+            join_integers(winning_ids),
+            max_score);
+        std::cout << std::endl;
+    }
+
+    std::cout << Ansi::reset;
+    exit(0);
 }
 
 void Game::doSpaceAction(const SpaceActions action) {
@@ -114,7 +177,7 @@ void Game::doSpaceAction(const SpaceActions action) {
     }
 }
 
-Player * Game::current_player() const {
+Player * Game::current_player() {
     return players[turn].get();
 }
 
@@ -144,7 +207,7 @@ void Game::onProperty() {
     }
 }
 
-void Game::payRent(Player *receiving_player, const Property &property) const {
+void Game::payRent(Player *receiving_player, const Property &property) {
     current_player()->request_enter(std::format(
         "Player {}, you must pay £{} rent to player {}\n",
         current_player()->Id(),
@@ -192,23 +255,12 @@ void Game::get_out_of_jail() {
     }
 }
 
-void Game::declare_bankruptcy() const {
+void Game::declare_bankruptcy() {
     clear_screen(true);
     std::cout << Ansi::red_fg;
 
     std::cout << std::format("Player {} has declared bankruptcy!", current_player()->Id()) << std::endl;
-    std::cout << "The game is over" << std::endl;
-
-    for (const auto & i : players) {
-        Player *player = i.get();
-
-        if (player->Id() == current_player()->Id()) continue;
-
-        std::cout << std::format("Player {} has a score of £{}", player->Id(), player->calculate_score()) << std::endl;
-    }
-
-    std::cout << Ansi::reset;
-    exit(0);
+    endGame(true, current_player()->Id());
 }
 
 void Game::buyProperty(Player *player, const Property &property) {
@@ -221,12 +273,12 @@ void Game::buyProperty(Player *player, const Property &property) {
 }
 
 
-void Game::landOnGo() const {
-    std::cout << std::format("You landed on go. Hered £{}!", go_amount) << std::endl;
+void Game::landOnGo() {
+    std::cout << std::format("You landed on go. Here is £{}!", go_amount) << std::endl;
     players[turn]->add_money(go_amount);
 }
 
-void Game::goToJail() const {
+void Game::goToJail() {
     clear_screen();
     printf("Player %d!\n", turn+1);
     printf("GO TO JAIL!\n");
@@ -236,7 +288,7 @@ void Game::goToJail() const {
     current_player()->enter_jail();
 }
 
-void Game::onJailSpace() const {
+void Game::onJailSpace() {
     if (!players[turn]->InJail()) return;
 
 

@@ -85,22 +85,24 @@ public:
      * @return The new space the player is on
      */
     int move_forward(int number_of_spaces);
+    int move_backward(int number_of_spaces);
 
+    void add_get_out_of_jail_free();
     void remove_get_out_of_jail_free();
 
-    int calculate_score();
+    int calculate_score() const;
 
     std::string as_string();
     /**
      * Gets the current state of the player, in a human-readable format
      * @return The current state of the player, for the game to output
      */
-    std::string current_state(Board& board);
+    std::string current_state();
 
     /**
      * @return The current space variable
      */
-    int Space();
+    int Space() const;
     /**
      * @return The current in_jail variable
      */

@@ -17,7 +17,7 @@
 
 #include "Ansi.h"
 
-    using json = nlohmann::json;
+using json = nlohmann::json;
 
 
 Player::Player(const int id) : player_type(PlayerType::User), id(id), space(0), money(1500), get_out_of_jail_attempts(0),
@@ -90,25 +90,53 @@ void Player::increase_get_out_of_jail_attempts() { get_out_of_jail_attempts += 1
 
 
 void Player::move_to_space(const int new_space) {
-    space = new_space % 40;
+    space = new_space % Game::board.MaxBoardSpaces();
 }
 
-int Player::move_forward(const int number_of_spaces) {
-    int old_space = space;
-    space = (space + number_of_spaces) % 40;
+int Player::move_forward(int number_of_spaces) {
+    const int old_space = space;
+    int new_space = old_space;
 
-    if (old_space > 1 && space == 1) {
-        money += Game::go_amount;
+    int attempts = 0;
+
+    while (number_of_spaces > 0) {
+        new_space = Game::board.get_next_space_number(new_space);
+        number_of_spaces--;
+        attempts++;
+
+        if (new_space == Game::board.GoSpaceNumber()) {
+            Game::passGo(this);
+        }
+
+        if (attempts > Game::max_roll) break;
     }
 
+    space = new_space;
+
     return space;
+}
+
+int Player::move_backward(const int number_of_spaces) {
+    const int old_space = space;
+    int new_space = old_space - number_of_spaces;
+
+    while (new_space < 0) {
+        new_space = Game::board.MaxBoardSpaces() - new_space;
+    }
+
+    space = new_space;
+    return space;
+}
+
+void Player::add_get_out_of_jail_free() {
+    get_out_of_jail_free = true;
 }
 
 void Player::remove_get_out_of_jail_free() {
     get_out_of_jail_free = false;
 }
 
-int Player::calculate_score() {
+int Player::calculate_score() const {
     int score = money;
 
     for (auto & property : properties) {
@@ -118,16 +146,16 @@ int Player::calculate_score() {
     return score;
 }
 
-    int Player::Space() { return space; }
+int Player::Space() const { return space; }
 
-std::string Player::current_state(Board & board) {
+std::string Player::current_state() {
     std::string message = color;
 
     if (in_jail)
         message += std::format("Player {} is in jail\n", id);
 
     if (!in_jail)
-        message += std::format("Player {} is on space {} - {}\n", id, space, board.get_space_name(space));
+        message += std::format("Player {} is on space {} - {}\n", id, space, Game::board.get_space_name(space));
 
     message += std::format("They have ${}\n", money);
 
@@ -145,7 +173,7 @@ std::string Player::current_state(Board & board) {
 
 void Player::enter_jail() {
     in_jail = true;
-    space = Board::jail_space;
+    space = Game::board.JailSpaceNumber();
 }
 
 void Player::exit_jail() { in_jail = false; }

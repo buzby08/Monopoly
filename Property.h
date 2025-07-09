@@ -133,7 +133,7 @@ public:
     Property(const std::string &name, int cost, int space, int site, int one_house, int two_house, int three_house, int four_house,
         int hotel, PropertyColorSet color_set);
 
-    Property(const PropertyStruct& data);
+    explicit Property(const PropertyStruct& data);
 
     [[nodiscard]] std::string name() const;
 

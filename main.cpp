@@ -3,13 +3,14 @@
 
 #include "AiPlayer.h"
 #include "Ansi.h"
+#include "ChanceCards.h"
 #include "UserPlayer.h"
 #include "Game.h"
 
 int main() {
     printf("Welcome to Monopoly, using c++\n");
 
-    Game game{};
+    Game::setupBoard("board.csv", "properties.csv");
 
     UserPlayer player_one(1, Ansi::cyan_fg);
     AiPlayer player_two(2, Ansi::green_fg);
@@ -18,11 +19,11 @@ int main() {
     player_two.use_delay();
     player_three.use_delay();
 
-    game.players.push_back(make_unique<UserPlayer>(player_one));
-    game.players.push_back(make_unique<AiPlayer>(player_two));
-    game.players.push_back(make_unique<AiPlayer>(player_three));
+    Game::players.push_back(make_unique<UserPlayer>(player_one));
+    Game::players.push_back(make_unique<AiPlayer>(player_two));
+    Game::players.push_back(make_unique<AiPlayer>(player_three));
 
-    game.play();
+    Game::play();
 
     return 0;
 }

@@ -7,79 +7,66 @@
 
 #include <format>
 #include <fstream>
-#include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <nlohmann/json.hpp>
 
+#include "utilities.h"
+#include "Logger.h"
 #include "Property.h"
 #include "PropertyCSVReader.h"
 
-std::vector<Property> Board::populate_properties() {
+std::vector<Property> Board::get_properties(const std::string &file_path) {
     std::vector<Property> all_properties = {};
 
-    const std::vector<PropertyStruct> all_property_structs = PropertyCSVReader::read("properties.csv");
+    const std::vector<PropertyStruct> all_property_structs = PropertyCSVReader::read(file_path);
 
     for (auto & property_struct : all_property_structs) {
         Property temp_property(property_struct);
-        all_properties.push_back(temp_property);
+        if (get_space_action(temp_property.space()) == SpaceActions::Property) {
+            all_properties.push_back(temp_property);
+            continue;
+        }
+
+        Logger::warning(std::format("Property {} is not in the board, and is being ignored", temp_property.name()));
     }
 
-
-
     return all_properties;
+}
+
+std::vector<int> Board::get_property_space_numbers() const {
+    std::vector<int> all_space_numbers = {};
+    for (auto &property : properties) {
+        all_space_numbers.push_back(property.space());
+    }
+
+    return all_space_numbers;
 }
 
 bool Board::is_property(int space_number) const {
     for (auto & property_space_number : property_space_numbers) {
         if (space_number == property_space_number) return true;
     }
-
     return false;
 }
 
-Board::Board() {
-    properties = populate_properties();
+Board::Board(const std::string &board_file_path, const std::string &properties_file_path) {
+    spaces = std::unordered_map<int, std::string>();
+    properties = std::vector<Property>();
 
-    for (auto & property : properties) {
-        property_space_numbers.push_back(property.space());
-    }
+    if (board_file_path != "")
+        spaces = read_spaces(board_file_path);
+
+    if (properties_file_path != "")
+        properties = get_properties(properties_file_path);
+
+    property_space_numbers = get_property_space_numbers();
+    max_board_spaces = spaces.size();
 }
 
 
-SpaceActions Board::get_space_action(int space_number) const {
-    if (is_property(space_number)) return SpaceActions::Property;
-
-    switch (space_number) {
-        case 0:
-            return SpaceActions::Go;
-
-        case 4: return SpaceActions::IncomeTax;
-
-        case 7:
-        case 22:
-        case 36:
-            return SpaceActions::Chance;
-
-        case 2:
-        case 17:
-        case 33:
-            return SpaceActions::CommunityChest;
-
-        case 10:
-            return SpaceActions::Jail;
-
-        case 20:
-            return SpaceActions::FreeParking;
-
-        case 38:
-            return SpaceActions::LuxuryTax;
-
-        case 30:
-            return SpaceActions::GoToJail;
-
-        default:
-            return SpaceActions::Invalid;
-    }
+SpaceActions Board::get_space_action(int space_number) {
+    return get_space_action(space_number, spaces);
 }
 
 Property Board::get_space_property(int space_number) {
@@ -90,23 +77,72 @@ Property Board::get_space_property(int space_number) {
     throw std::invalid_argument("The provided space is not a valid property");
 }
 
-std::string Board::get_space_name(int space_number) {
+std::string Board::get_space_name(const int space_number) {
     if (is_property(space_number)) return get_space_property(space_number).name();
 
-    switch (get_space_action(space_number)) {
-        case SpaceActions::Go: return "Go";
-        case SpaceActions::IncomeTax: return "Income Tax";
-        case SpaceActions::Chance: return "Chance";
-        case SpaceActions::CommunityChest: return "Community Chest";
-        case SpaceActions::Jail: return "Jail";
-        case SpaceActions::FreeParking: return "Free Parking";
-        case SpaceActions::LuxuryTax: return "Luxury Tax";
-        case SpaceActions::GoToJail: return "Go To Jail";
+    return space_action_to_string(get_space_action(space_number));
+}
 
-        case SpaceActions::Invalid:
-        default:
-            return "N/A";
+int Board::get_next_space_number(int current_space_number) const {
+    while (true) {
+        current_space_number = (current_space_number + 1) % max_board_spaces;
+
+        if (spaces.contains(current_space_number)) return current_space_number;
     }
+}
+
+std::unordered_map<int, std::string> Board::read_spaces(const std::string& file_path) {
+    std::unordered_map<int, std::string> result;
+
+    std::ifstream file(file_path);
+
+    std::string header_line;
+    getline(file, header_line);
+
+    if (header_line != "spaceNumber,type")
+        Logger::error(std::format(
+            "The format in {} is invalid. Please correct this according to README.md",
+            file_path));
+
+    std::string line;
+
+    while (getline(file, line)) {
+        std::vector<std::string> items = split_string(line, ',');
+        if (items.size() < 2) {
+            Logger::warning(std::format(
+                "An invalid entry in {} has been found: `{}`",
+                file_path, line));
+            continue;
+        }
+
+        int board_space = stoi(items[0]);
+        const std::string& space_name = items[1];
+        result[board_space] = space_name;
+
+        if (get_space_action(board_space, result) == SpaceActions::Jail)
+            jail_space_number = board_space;
+
+        if (get_space_action(board_space, result) == SpaceActions::Go)
+            go_space_number = board_space;
+
+    }
+
+    return result;
+}
+
+SpaceActions Board::get_space_action(int space_number, const std::unordered_map<int, std::string> &spaces) {
+    if (space_actions.contains(space_number)) {
+        return space_actions.at(space_number);
+    }
+
+    if (!spaces.contains(space_number)) return SpaceActions::Invalid;
+
+    const std::string space_action = spaces.at(space_number);
+
+    SpaceActions actual_space_action = string_to_space_action(space_action);
+
+    space_actions[space_number] = actual_space_action;
+    return actual_space_action;
 }
 
 

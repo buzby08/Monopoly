@@ -8,24 +8,11 @@
 #include <iostream>
 #include <vector>
 
+#include "utilities.h"
 #include "Property.h"
 
 std::vector<std::string> PropertyCSVReader::split_to_values(const std::string &line) {
-    std::vector<std::string> values;
-
-    std::string message;
-
-    for (auto & character : line) {
-        if (character == ',') {
-            values.push_back(message);
-            message = "";
-            continue;
-        }
-
-        message += character;
-    }
-
-    return values;
+    return split_string(line, ',');
 }
 
 std::vector<PropertyStruct> PropertyCSVReader::read(const std::string& file_path) {
