@@ -1,0 +1,601 @@
+[
+  {
+    "id": 1,
+    "computer-controlled": false,
+    "color": "cyan"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "computer-controlled": true,
+    "use-delay": false,
+    "color": "green"
+  }
+]

@@ -1,0 +1,86 @@
+[
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/main.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/main.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/main.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/main.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/utilities.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/utilities.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/utilities.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/utilities.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/utilities.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/Player.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/Player.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/Player.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/Player.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/Player.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/Game.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/Game.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/Game.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/Game.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/Game.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/UserPlayer.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/UserPlayer.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/UserPlayer.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/UserPlayer.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/UserPlayer.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/AiPlayer.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/AiPlayer.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/AiPlayer.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/AiPlayer.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/AiPlayer.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/Property.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/Property.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/Property.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/Property.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/Property.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/Board.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/Board.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/Board.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/Board.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/Board.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/Ansi.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/Ansi.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/Ansi.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/Ansi.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/Ansi.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/PropertyCSVReader.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/PropertyCSVReader.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/PropertyCSVReader.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/PropertyCSVReader.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/PropertyCSVReader.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/ChanceCards.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/ChanceCards.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/ChanceCards.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/ChanceCards.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/ChanceCards.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/Logger.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/Logger.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/Logger.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/Logger.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/Logger.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/Settings.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/Settings.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/Settings.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/Settings.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/Settings.cpp.o"
+},
+{
+  "directory": "/home/busby08/CLionProjects/Monopoly/build",
+  "command": "/usr/bin/c++ -DFMT_SHARED -I/home/busby08/CLionProjects/Monopoly/include -g -std=gnu++20 -fdiagnostics-color=always -fmodules-ts -fmodule-mapper=CMakeFiles/Monopoly.dir/src/BoardCreator.cpp.o.modmap -MD -fdeps-format=p1689r5 -x c++ -o CMakeFiles/Monopoly.dir/src/BoardCreator.cpp.o -c /home/busby08/CLionProjects/Monopoly/src/BoardCreator.cpp",
+  "file": "/home/busby08/CLionProjects/Monopoly/src/BoardCreator.cpp",
+  "output": "/home/busby08/CLionProjects/Monopoly/build/CMakeFiles/Monopoly.dir/src/BoardCreator.cpp.o"
+}
+]
