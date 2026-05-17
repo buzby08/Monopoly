@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "color": "cyan",
+    "computerControlled": false
+  },
+  {
+    "id": 2,
+    "color": "yellow",
+    "computerControlled": true,
+    "useDelay": true
+  },
+  {
+    "id": 3,
+    "color": "magenta",
+    "computerControlled": true,
+    "useDelay": true
+  },
+  {
+    "id": 4,
+    "color": "blue",
+    "computerControlled": true,
+    "useDelay": true
+  },
+  {
+    "id": 5,
+    "color": "green",
+    "computerControlled": true,
+    "useDelay": true
+  }
+]

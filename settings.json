@@ -1,0 +1,7 @@
+{
+  "boardFilePath": "board.csv",
+  "propertiesFilePath": "properties.csv",
+  "goAmount": 200,
+  "jailExitAmount": 50,
+  "rollPerDice": 6
+}
